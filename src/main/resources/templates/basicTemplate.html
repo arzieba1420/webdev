@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    <!--Wstrzyknięcie stałej (tekstu) do nagłówka messages.properties  testowe dane w znacznikach-->
+    <h1 th:text="#{welcome.message}">Hello</h1>
+    <!--domyslnie znaczniki html nie są przetwarzane z message.properties, musi być utext-->
+    <h3 th:utext="#{welcome.info}">Test</h3>
 
+    <!--Wstrzyknięcie tekstu do paragrafu ze zmiennych-->
+    <!--Pipe powoduje łączenie zmiennych w stringa-->
+    <p th:text="|${fName} - ${lName}|">Jan Nowak</p>
 
+    <hr>
 
+    <p th:text="|${person.firstName} ${person.lastName}|">XXX YYY</p>
+    <p th:text="${person.phoneNumber}">123456789</p>
+    <p th:text="|Pensja: ${#numbers.formatDecimal(person.salary,1,2)}|">5000.00</p>
 
 
 </body>
