@@ -1,5 +1,6 @@
 package com.arzieba.domain;
 
+
 public class Person {
     private String firstName;
     private String lastName;

@@ -15,7 +15,7 @@
             <th>Pensja</th>
         </thead>
         <tbody>
-            <tr th:each="person, iterStat : ${list}">
+            <tr th:each="person, iterStat : ${list}" th:if="${person.visible}">
                 <td th:text="${iterStat.index+1}"></td>
                 <td th:text="${person.firstName}"></td>
                 <td th:text="${person.lastName}"></td>

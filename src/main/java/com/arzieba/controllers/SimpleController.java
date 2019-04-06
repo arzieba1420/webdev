@@ -39,6 +39,16 @@ public class SimpleController {
         return "iterationTemplate";
     }
 
+    @GetMapping("links")
+    public String links(Model model){
+        return "linksTemplate";
+    }
+
+    @GetMapping("inter")
+    public String inter(Model model){
+        return "interTemplate";
+    }
+
 
 
 
@@ -57,7 +67,7 @@ public class SimpleController {
         person2.setLastName("TestLastname");
         person2.setPhoneNumber("111-222-333");
         person2.setSalary(4000.00);
-        person2.setVisible(true);
+        person2.setVisible(false);
         list.add(person2);
 
         Person person = new Person();
@@ -70,5 +80,8 @@ public class SimpleController {
 
         return list;
     }
+
+
+
 
 }
