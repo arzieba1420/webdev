@@ -4,6 +4,7 @@ import com.arzieba.domain.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,12 @@ import java.util.List;
 
 @Controller
 public class SimpleController {
+
+    private List<Person> listPerson;
+
+    public SimpleController() {
+        listPerson = generateList();
+    }
 
     @GetMapping("basic")
     public String basic(Model model){
@@ -33,9 +40,8 @@ public class SimpleController {
 
     @GetMapping("iteration")
     public String iteration(Model model){
-        List<Person> list = generateList();
 
-        model.addAttribute("list",list);
+        model.addAttribute("list",listPerson);
         return "iterationTemplate";
     }
 
@@ -47,6 +53,32 @@ public class SimpleController {
     @GetMapping("inter")
     public String inter(Model model){
         return "interTemplate";
+    }
+
+    @GetMapping("forms")
+    public String forms(Model model){
+
+        model.addAttribute("person",new Person());
+        return "formsTemplate";
+    }
+
+    @PostMapping("formSave")
+    public String formSave(Person person, Model model){
+
+        listPerson.add(person);
+        return "successTemplate";
+    }
+
+    @GetMapping("fragments")
+    public String fragments(Model model){
+
+        return "fragments/fragmentsTmp";
+    }
+
+    @GetMapping("fragmentsT")
+    public String fragmentsT(Model model){
+
+        return "fragments/fragmentsTmpT";
     }
 
 
